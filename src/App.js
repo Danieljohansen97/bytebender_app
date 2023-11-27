@@ -15,8 +15,9 @@ function App() {
             // Maps through the array of routes, so edit routes.js to add more.
             // Remember to update the NavBar.jsx component as well.
             routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.component} />
-          ))}
+              <Route key={index} path={route.path} element={route.component} />
+            ))
+          }
         </Routes>
       </div>
     </Router>
