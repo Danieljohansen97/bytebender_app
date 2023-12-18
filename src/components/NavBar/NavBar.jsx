@@ -26,7 +26,11 @@ const NavBar = () => {
             <Nav.Link as={NavLink} to="/gameserver" className={styles.navLink}>
               Gameserver
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/drinking-game" className={styles.navLink}>
+            <Nav.Link
+              as={NavLink}
+              to="/drinking-game"
+              className={styles.navLink}
+            >
               Drinking Game
             </Nav.Link>
           </Nav>
