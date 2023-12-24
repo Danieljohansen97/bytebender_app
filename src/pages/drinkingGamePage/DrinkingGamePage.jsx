@@ -13,7 +13,23 @@ import {
 const DrinkingGamePage = () => {
   const [newPlayer, setNewPlayer] = useState("");
   const [players, setPlayers] = useState([]);
-  const [questions, setQuestions] = useState([]);
+  const [currentPlayer, setCurrentPlayer] = useState("");
+  const [currentPlayerCount, setCurrentPlayerCount] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState({});
+  const [questions, setQuestions] = useState([
+    {
+      task: "Do something",
+      drink: 1,
+    },
+    {
+      task: "Do something else",
+      drink: 2,
+    },
+    {
+      task: "Do something completely different",
+      drink: 3,
+    },
+  ]);
   const [gameRunning, setGameRunning] = useState(false);
 
   const handleAddPlayer = (event) => {
@@ -24,7 +40,16 @@ const DrinkingGamePage = () => {
   };
 
   const handleAskQuestion = () => {
-    console.log("Question asked!");
+    let tempQuestion = questions[Math.floor(Math.random() * questions.length)];
+    setCurrentQuestion(tempQuestion);
+
+    if (currentPlayer === "" || currentPlayer === players[players.length - 1]) {
+      setCurrentPlayer(players[0]);
+      setCurrentPlayerCount(0);
+    } else {
+      setCurrentPlayerCount(currentPlayerCount + 1)
+      setCurrentPlayer(players[currentPlayerCount + 1]);
+    }
   };
 
   return (
@@ -73,10 +98,33 @@ const DrinkingGamePage = () => {
           )}
         </div>
       ) : (
-        <div className="d-grid gap-2">
-          <Button variant="info" size="lg" onClick={handleAskQuestion}>
-            Ask Question!
-          </Button>
+        <div>
+          {currentQuestion.drink >= 1 ? (
+            <Card>
+              <Card.Header>
+                <Card.Title>{currentPlayer}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>
+                  {currentQuestion.task} or drink {currentQuestion.drink}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer>
+                <Button variant="info" size="lg" onClick={handleAskQuestion}>
+                  New Question
+                </Button>
+              </Card.Footer>
+            </Card>
+          ) : (
+            <div></div>
+          )}
+          {/* Game Running block */}
+          <div className="d-grid gap-2">
+            <Button variant="info" size="lg" onClick={handleAskQuestion}>
+              Ask Question!
+            </Button>
+          </div>
+          {/* Game Running block */}
         </div>
       )}
 
@@ -90,9 +138,15 @@ const DrinkingGamePage = () => {
         <div></div>
       )}
 
-      {players.length === 0 && <p className="text-danger">You need to add players!</p>}
-      {players.length === 1 && <p className="text-danger">Minimum 2 players required!</p>}
-      {players.length >= 2 & !gameRunning && <p className="text-danger">Minimum 2 players required!</p>}
+      {players.length === 0 && (
+        <p className="text-danger">You need to add players!</p>
+      )}
+      {players.length === 1 && (
+        <p className="text-danger">Minimum 2 players required!</p>
+      )}
+      {(players.length >= 2) & !gameRunning && (
+        <p className="text-danger">Minimum 2 players required!</p>
+      )}
     </Container>
   );
 };
