@@ -29,6 +29,13 @@ const NavBar = () => {
             <Nav.Link as={NavLink} to="/about" className={styles.navLink}>
               About
             </Nav.Link>
+            <Nav.Link
+              as={NavLink}
+              to="/drinking-game"
+              className={styles.navLink}
+            >
+              Drinking Game
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
