@@ -8,11 +8,11 @@ import MusicPage from "../pages/musicPage/MusicPage";
 /* Add routes for use in the Navbar component */
 const routes = [
   { path: '/', component: <HomePage />, exact: true },
-  { path: '/about', component: <AboutPage /> },
-  { path: '/contact', component: <ContactPage /> },
+  { path: '/music', component: <MusicPage /> },
   { path: '/gameserver', component: <GameServerPage /> },
   { path: '/drinking-game', component: <DrinkingGamePage /> },
-  { path: '/music', component: <MusicPage /> },
+  { path: '/about', component: <AboutPage /> },
+  { path: '/contact', component: <ContactPage /> },
 ];
 
 export default routes;
