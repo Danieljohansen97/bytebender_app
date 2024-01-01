@@ -17,14 +17,17 @@ const NavBar = () => {
             <Nav.Link as={NavLink} to="/" className={styles.navLink}>
               Home
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/about" className={styles.navLink}>
-              About
+            <Nav.Link as={NavLink} to="/music" className={styles.navLink}>
+              Music
             </Nav.Link>
             <Nav.Link as={NavLink} to="/contact" className={styles.navLink}>
               Contact
             </Nav.Link>
             <Nav.Link as={NavLink} to="/gameserver" className={styles.navLink}>
               Gameserver
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/about" className={styles.navLink}>
+              About
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
